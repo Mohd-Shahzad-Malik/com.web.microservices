@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 //@FeignClient(name = "currency-exchange-service", url = "localhost:8001")
 //if we are using @RibbonCilent then no need to pass url in feignClient
+//@FeignClient(name = "currency-exchange-service")
 @FeignClient(name = "currency-exchange-service")
-@RibbonClient(name = "currency-exchange-service")
+@RibbonClient(name = "netflix-zuul-api-gateway-server")
 public interface FeignConfig {
 
-    @GetMapping("/v1/currency-exchange/from/{from}/to/{to}")
+    @GetMapping("currency-exchange-service/v1/currency-exchange/from/{from}/to/{to}")
     ExchangeValue retriveExchangeValue(@PathVariable("from") String from , @PathVariable("to") String to);
 }
